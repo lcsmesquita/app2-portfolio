@@ -1,4 +1,6 @@
 import streamlit as st
+import pandas   # Going to use it for reading csv file, we could do it 
+# using the with open method, but it would be a lot of work.
 
 st.set_page_config(layout='wide')
 
@@ -18,3 +20,18 @@ content2 = """
 Below you can find some of the apps i have built in Python. Feel free to contact me!
 """
 st.write(content2)
+
+col3, col4 = st.columns(2)
+
+df = pandas.read_csv("data.csv", sep=';') #sep default is ","
+
+with col3:
+    for index, row in df[:10].iterrows(): #iterrows iter about rows in pairs.
+        st.header(row["title"])
+    
+
+
+with col4:
+    for index, row in df[10:].iterrows(): #the [10:] slicer means that i'll only have in this
+        # column, the rows that start in index 10, and go beyond.
+        st.header(row["title"])
