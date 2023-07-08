@@ -21,13 +21,16 @@ Below you can find some of the apps i have built in Python. Feel free to contact
 """
 st.write(content2)
 
-col3, col4 = st.columns(2)
+col3, empty_col, col4 = st.columns([1.5, 0.5, 1.5]) #setting collumns and scale of columns.
 
 df = pandas.read_csv("data.csv", sep=';') #sep default is ","
 
 with col3:
     for index, row in df[:10].iterrows(): #iterrows iter about rows in pairs.
         st.header(row["title"])
+        st.write(row["description"])
+        st.image("images/" + row["image"])
+        st.write(f"[Source Code]({row['url']})")
     
 
 
@@ -35,3 +38,6 @@ with col4:
     for index, row in df[10:].iterrows(): #the [10:] slicer means that i'll only have in this
         # column, the rows that start in index 10, and go beyond.
         st.header(row["title"])
+        st.write(row["description"])
+        st.image("images/" + row["image"]) #adding the image adress
+        # it's important to note that, i did not have to use the backslash.
