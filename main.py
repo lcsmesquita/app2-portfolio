@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas   # Going to use it for reading csv file, we could do it 
 # using the with open method, but it would be a lot of work.
-
+#test
 st.set_page_config(layout='wide')
 
 col1, col2 = st.columns(2) # two columns, each one stored in a variable.
